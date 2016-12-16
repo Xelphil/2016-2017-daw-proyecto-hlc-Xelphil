@@ -78,9 +78,9 @@ class Articulo
     private $ubicacion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="estado", type="string", length=255)
+     * @var Estado
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estado",inversedBy="condicion")
      */
     private $estado;
 
@@ -299,30 +299,6 @@ class Articulo
     public function getUbicacion()
     {
         return $this->ubicacion;
-    }
-
-    /**
-     * Set estado
-     *
-     * @param string $estado
-     *
-     * @return Articulo
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return string
-     */
-    public function getEstado()
-    {
-        return $this->estado;
     }
 
     /**
