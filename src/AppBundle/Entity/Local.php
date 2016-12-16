@@ -29,9 +29,9 @@ class Local
     private $nombre;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="emplazamiento_local", type="string", length=255)
+     * @var Planta
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Planta",inversedBy="emplazamiento")
      */
     private $emplazamientoLocal;
 
@@ -75,30 +75,6 @@ class Local
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    /**
-     * Set emplazamientoLocal
-     *
-     * @param string $emplazamientoLocal
-     *
-     * @return Local
-     */
-    public function setEmplazamientoLocal($emplazamientoLocal)
-    {
-        $this->emplazamientoLocal = $emplazamientoLocal;
-
-        return $this;
-    }
-
-    /**
-     * Get emplazamientoLocal
-     *
-     * @return string
-     */
-    public function getEmplazamientoLocal()
-    {
-        return $this->emplazamientoLocal;
     }
 
     /**
