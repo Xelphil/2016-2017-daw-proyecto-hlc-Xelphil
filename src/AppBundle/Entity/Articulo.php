@@ -72,7 +72,7 @@ class Articulo
 
     /**
      * @var Local
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Local",inversedBy="ubicacionArticulos")
      */
     private $ubicacion;
@@ -93,7 +93,7 @@ class Articulo
 
     /**
      * @var Usuario
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario",inversedBy="user")
      */
     private $responsable;
