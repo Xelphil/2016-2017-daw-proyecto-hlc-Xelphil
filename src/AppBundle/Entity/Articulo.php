@@ -71,9 +71,9 @@ class Articulo
     private $fechaBaja;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="ubicacion", type="string", length=255)
+     * @var Local
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Local",inversedBy="ubicacionArticulos")
      */
     private $ubicacion;
 
@@ -275,30 +275,6 @@ class Articulo
     public function getFechaBaja()
     {
         return $this->fechaBaja;
-    }
-
-    /**
-     * Set ubicacion
-     *
-     * @param string $ubicacion
-     *
-     * @return Articulo
-     */
-    public function setUbicacion($ubicacion)
-    {
-        $this->ubicacion = $ubicacion;
-
-        return $this;
-    }
-
-    /**
-     * Get ubicacion
-     *
-     * @return string
-     */
-    public function getUbicacion()
-    {
-        return $this->ubicacion;
     }
 
     /**
