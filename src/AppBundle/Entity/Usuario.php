@@ -43,9 +43,9 @@ class Usuario
     private $apellido2;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
+     * @var Articulos
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Articulo",mappedBy="responsable")
      */
     private $user;
 
@@ -144,30 +144,6 @@ class Usuario
     public function getApellido2()
     {
         return $this->apellido2;
-    }
-
-    /**
-     * Set user
-     *
-     * @param string $user
-     *
-     * @return Usuario
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return string
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**

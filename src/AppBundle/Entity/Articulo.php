@@ -92,9 +92,9 @@ class Articulo
     private $proveedor;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="responsable", type="string", length=255)
+     * @var Usuario
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario",inversedBy="user")
      */
     private $responsable;
 
@@ -349,28 +349,5 @@ class Articulo
         return $this->proveedor;
     }
 
-    /**
-     * Set responsable
-     *
-     * @param string $responsable
-     *
-     * @return Articulo
-     */
-    public function setResponsable($responsable)
-    {
-        $this->responsable = $responsable;
-
-        return $this;
-    }
-
-    /**
-     * Get responsable
-     *
-     * @return string
-     */
-    public function getResponsable()
-    {
-        return $this->responsable;
-    }
 }
 
