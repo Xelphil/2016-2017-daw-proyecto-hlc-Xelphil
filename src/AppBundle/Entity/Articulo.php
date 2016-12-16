@@ -85,9 +85,9 @@ class Articulo
     private $estado;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="proveedor", type="string", length=255)
+     * @var Proveedor
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Proveedor",inversedBy="nombre")
      */
     private $proveedor;
 
