@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Listado de Locales</h1>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-sm-5">Nombre</th>
+                <th class="col-sm-5">Planta</th>
+                <th class="col-sm-2"><a href="{{ path('nuevo_local') }}" class="btn btn-success"><i class="fa fa-plus"></i> Añadir local</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for local in locales %}
+                <tr>
+                    <td>{{ local.planta }}</td>
+                    <td><a href="{{ path('listar_materiales',{'id':local.id}) }}" > {{ local.nombre }}</a></td>
+                    <td>
+                        <a href="{{ path('modificar_local',{'id':local.id}) }}" class="btn btn-xs btn-info col-sm-5" title="Modificar"><i class="fa fa-pencil"></i> </a>
+                        <a href="{{ path('borrar_local',{'id':local.id}) }}" class="btn btn-xs btn-danger col-sm-5" title="Borrar"><i class="fa fa-trash"></i> </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

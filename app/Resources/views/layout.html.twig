@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% set ruta = app.request.get('_route') %}
+    {% block navbar %}
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Desplegar barra de navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Aplicacion</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li{% if ruta == 'inicio' %} class="active"{% endif %}><a href="{{ path('inicio') }}"><i class="fa fa-home"></i> Portada</a></li>
+                        <li{% if ruta == 'mostrar_locales' %} class="active"{% endif %}><a href="{{ path('mostrar_locales') }}"><i class="fa fa-group"></i> Locales</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+    {% endblock %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Listado de Materiales</h1>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th class="col-sm-1">Marca</th>
+            <th class="col-sm-1">Modelo</th>
+            <th class="col-sm-1">Numero de Serie</th>
+            <th class="col-sm-1">Unidades</th>
+            <th class="col-sm-1">Proveedor</th>
+            <th class="col-sm-1">Ubicación</th>
+            <th class="col-sm-1">Fecha de alta</th>
+            <th class="col-sm-1">Fecha de baja</th>
+            <th class="col-sm-1"><a href="{{ path('nuevo_material') }}" class="btn btn-success"><i class="fa fa-plus"></i> Añadir material</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for material in materiales %}
+            <tr>
+                <td>{{ material.marca }}</td>
+                <td>{{ material.modelo }}</td>
+                <td>{{ material.numserie }}</td>
+                <td>{{ material.unidades }}</td>
+                <td>{{ material.provedor }}</td>
+                <td>{{ material.ubicacion }}</td>
+                <td>{{ material.fechaAlta }}</td>
+                <td>{{ material.fechaBaja }}</td>
+                <td>
+                    <a href="{{ path('modificar_material',{'id':material.id}) }}" class="btn btn-xs btn-info" title="Modificar"><i class="fa fa-pencil"></i></a>
+                    <a href="{{ path('borrar_material',{'id':material.id}) }}" class="btn btn-xs btn-danger" title="Borrar"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
