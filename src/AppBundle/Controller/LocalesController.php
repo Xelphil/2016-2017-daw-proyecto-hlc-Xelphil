@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Local;
+use AppBundle\Form\LocalType;
 use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -44,7 +45,7 @@ class LocalesController extends Controller
             $em->persist($local);
         }
 
-        $form = $this->createForm(Local::class, $local);
+        $form = $this->createForm(LocalType::class, $local);
 
         $form->handleRequest($request);
 

@@ -2,6 +2,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Material;
+use AppBundle\Form\MaterialType;
 use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\local;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -46,7 +47,7 @@ class MaterialController extends Controller
             $em->persist($material);
         }
 
-        $form = $this->createForm(Material::class, $material);
+        $form = $this->createForm(MaterialType::class, $material);
 
         $form->handleRequest($request);
 
