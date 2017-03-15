@@ -2,9 +2,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Material;
+use AppBundle\Entity\Local;
 use AppBundle\Form\MaterialType;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\local;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +14,7 @@ class MaterialController extends Controller
     /**
      * @Route("/materiales/{id}", name="listar_materiales")
      */
-    public function indexAction(local $id)
+    public function indexmatAction(Local $id)
     {
 
         /** @var EntityManager $em */
@@ -23,14 +23,13 @@ class MaterialController extends Controller
         $materiales = $em->createQueryBuilder()
             ->select('m')
             ->from('AppBundle:Material','m')
-            ->where('m.locales = :mLocales')
+            ->where('m.locales = :idlocal')
             ->setParameter('idlocal',$id)
             ->orderBy('m.fechaAlta','DESC')
             ->getQuery()
             ->getResult();
         return $this->render('aplicacion/listar_materiales.html.twig', [
-            'materiales' => $materiales,
-            'id' => $id
+            'materiales' => $materiales
         ]);
     }
 
