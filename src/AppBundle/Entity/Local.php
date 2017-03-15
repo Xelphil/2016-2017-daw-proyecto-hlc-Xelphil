@@ -38,9 +38,9 @@ class Local
     /**
      * @var Usuario[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Usuario",inversedBy="reslocal")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Usuario",inversedBy="uslocal")
      */
-    private $resusuario;
+    private $losusuario;
 
     /**
      * @var Material[]
@@ -54,7 +54,7 @@ class Local
      */
     public function __construct()
     {
-        $this->resusuario = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->losusuario = new \Doctrine\Common\Collections\ArrayCollection();
         $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -117,37 +117,37 @@ class Local
     }
 
     /**
-     * Add resusuario
+     * Add losusuario
      *
-     * @param \AppBundle\Entity\Usuario $resusuario
+     * @param \AppBundle\Entity\Usuario $losusuario
      *
      * @return Local
      */
-    public function addResusuario(\AppBundle\Entity\Usuario $resusuario)
+    public function addLosusuario(\AppBundle\Entity\Usuario $losusuario)
     {
-        $this->resusuario[] = $resusuario;
+        $this->losusuario[] = $losusuario;
 
         return $this;
     }
 
     /**
-     * Remove resusuario
+     * Remove losusuario
      *
-     * @param \AppBundle\Entity\Usuario $resusuario
+     * @param \AppBundle\Entity\Usuario $losusuario
      */
-    public function removeResusuario(\AppBundle\Entity\Usuario $resusuario)
+    public function removeLosusuario(\AppBundle\Entity\Usuario $losusuario)
     {
-        $this->resusuario->removeElement($resusuario);
+        $this->losusuario->removeElement($losusuario);
     }
 
     /**
-     * Get resusuario
+     * Get losusuario
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getResusuario()
+    public function getLosusuario()
     {
-        return $this->resusuario;
+        return $this->losusuario;
     }
 
     /**

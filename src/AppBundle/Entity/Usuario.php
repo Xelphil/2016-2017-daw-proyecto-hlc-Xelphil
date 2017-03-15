@@ -59,15 +59,16 @@ class Usuario
     /**
      * @var Local[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Local",mappedBy="resusuario")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Local",mappedBy="losusuario")
      */
-    private $reslocal;
+    private $uslocal;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->reslocal = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->uslocal = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -201,36 +202,36 @@ class Usuario
     }
 
     /**
-     * Add reslocal
+     * Add uslocal
      *
-     * @param \AppBundle\Entity\Local $reslocal
+     * @param \AppBundle\Entity\Local $uslocal
      *
      * @return Usuario
      */
-    public function addReslocal(\AppBundle\Entity\Local $reslocal)
+    public function addUslocal(\AppBundle\Entity\Local $uslocal)
     {
-        $this->reslocal[] = $reslocal;
+        $this->uslocal[] = $uslocal;
 
         return $this;
     }
 
     /**
-     * Remove reslocal
+     * Remove uslocal
      *
-     * @param \AppBundle\Entity\Local $reslocal
+     * @param \AppBundle\Entity\Local $uslocal
      */
-    public function removeReslocal(\AppBundle\Entity\Local $reslocal)
+    public function removeUslocal(\AppBundle\Entity\Local $uslocal)
     {
-        $this->reslocal->removeElement($reslocal);
+        $this->uslocal->removeElement($uslocal);
     }
 
     /**
-     * Get reslocal
+     * Get uslocal
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getReslocal()
+    public function getUslocal()
     {
-        return $this->reslocal;
+        return $this->uslocal;
     }
 }

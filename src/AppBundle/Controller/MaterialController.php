@@ -23,13 +23,14 @@ class MaterialController extends Controller
         $materiales = $em->createQueryBuilder()
             ->select('m')
             ->from('AppBundle:Material','m')
-            ->where('m.locales = :m_locales')
+            ->where('m.locales = :mLocales')
             ->setParameter('idlocal',$id)
             ->orderBy('m.fechaAlta','DESC')
             ->getQuery()
             ->getResult();
         return $this->render('aplicacion/listar_materiales.html.twig', [
-            'materiales' => $materiales
+            'materiales' => $materiales,
+            'id' => $id
         ]);
     }
 

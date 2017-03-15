@@ -32,8 +32,8 @@ class LocalesController extends Controller
     }
 
     /**
-     * @Route("/nuevo", name="nuevo_local")
      * @Route("/modificar/{id}", name="modificar_local")
+     * @Route("/nuevo", name="nuevo_local")
      */
     public function formlocalesAction(Request $request, Local $local = null)
     {
@@ -49,12 +49,13 @@ class LocalesController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
             try {
                 $em->flush();
                 $this->addFlash('estado', 'Cambios guardados con éxito');
                 return $this->redirectToRoute('mostrar_locales');
             }
-            catch(Exception $e) {
+            catch(\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');
             }
 
@@ -86,12 +87,8 @@ class LocalesController extends Controller
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
-
+        $em->remove($local);
         try {
-            foreach($local->getNombre() as $nombre) {
-                $em->remove($nombre);
-            }
-            $em->remove($local);
             $em->flush();
             $this->addFlash('estado', 'Local eliminado con éxito');
         }
