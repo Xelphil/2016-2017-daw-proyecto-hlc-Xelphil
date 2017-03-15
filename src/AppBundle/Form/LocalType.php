@@ -8,6 +8,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @param FormBuilderInterface $builder
+ * @param array $options
+ */
 class LocalType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -18,9 +22,6 @@ class LocalType extends AbstractType
             ])
             ->add('nombre', TextType::class,[
                 'label'=> 'Nombre'
-            ])
-            ->add('resusuario', null,[
-                'label'=> 'Usuario'
             ]);
     }
 

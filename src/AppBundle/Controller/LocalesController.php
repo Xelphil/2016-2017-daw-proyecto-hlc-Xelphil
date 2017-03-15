@@ -32,15 +32,14 @@ class LocalesController extends Controller
     }
 
     /**
-     * @Route("/nuevo", name="nuevo_local", methods={"GET", "POST"})
-     * @Route("/modificar/{id}", name="modificar_local", methods={"GET", "POST"})
+     * @Route("/nuevo", name="nuevo_local")
+     * @Route("/modificar/{id}", name="modificar_local")
      */
     public function formlocalesAction(Request $request, Local $local = null)
     {
-        /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        if (null == $local) {
+        if (null === $local) {
             $local = new Local();
             $em->persist($local);
         }
@@ -61,7 +60,7 @@ class LocalesController extends Controller
 
         }
 
-        return $this->render('aplicacion/listar_locales.html.twig', [
+        return $this->render('aplicacion/form_locales.html.twig', [
             'local' => $local,
             'formulario' => $form->createView()
         ]);
