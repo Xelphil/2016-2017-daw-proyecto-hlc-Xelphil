@@ -70,7 +70,7 @@ class MaterialController extends Controller
     }
 
     /**
-     * @Route("/eliminar/{id}", name="borrar_material", methods={"GET"})
+     * @Route("/eliminar_material/{id}", name="borrar_material", methods={"GET"})
      */
     public function borrarmaterialesAction(Material $material)
     {
@@ -83,26 +83,22 @@ class MaterialController extends Controller
     }
 
     /**
-     * @Route("/eliminar/{id}", name="confirmar_borrar_material", methods={"POST"})
+     * @Route("/eliminar_material/{id}", name="confirmar_borrar_material", methods={"POST"})
      */
     public function borrarDeVerdadAction(Material $material)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
-
+        $em->remove($material);
         try {
-            foreach($material->getId() as $nombre) {
-                $em->remove($nombre);
-            }
-            $em->remove($material);
             $em->flush();
             $this->addFlash('estado', 'Material eliminado con éxito');
         }
-        catch(Exception $e) {
+        catch(\Exception $e) {
             $this->addFlash('error', 'No se han podido eliminar');
         }
 
-        return $this->redirectToRoute('listar_materiales');
+        return $this->redirectToRoute('mostrar_locales');
     }
 
 }

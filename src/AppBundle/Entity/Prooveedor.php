@@ -171,4 +171,7 @@ class Prooveedor
     {
         return $this->materialel;
     }
+    public function __toString() {
+        return $this->getNombre();
+    }
 }

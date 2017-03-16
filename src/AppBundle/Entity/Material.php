@@ -372,4 +372,7 @@ class Material
     {
         return $this->estados;
     }
+    public function __toString() {
+        return $this->getMarca();
+    }
 }

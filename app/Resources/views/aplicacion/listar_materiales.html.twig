@@ -25,8 +25,8 @@
                 <td>{{ material.unidades }}</td>
                 <td>{{ material.provedor }}</td>
                 <td>{{ material.ubicacion }}</td>
-                <td>{{ material.fechaAlta }}</td>
-                <td>{{ material.fechaBaja }}</td>
+                <td>{{ material.fechaAlta | date('d/m/Y')  }}</td>
+                <td>{{ material.fechaBaja | date('d/m/Y')  }}</td>
                 <td>
                     <a href="{{ path('modificar_material',{'id':material.id}) }}" class="btn btn-xs btn-info" title="Modificar"><i class="fa fa-pencil"></i></a>
                     <a href="{{ path('borrar_material',{'id':material.id}) }}" class="btn btn-xs btn-danger" title="Borrar"><i class="fa fa-trash"></i></a>

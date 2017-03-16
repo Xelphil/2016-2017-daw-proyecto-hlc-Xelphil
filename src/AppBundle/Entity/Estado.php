@@ -110,4 +110,7 @@ class Estado
     {
         return $this->estadom;
     }
+    public function __toString() {
+        return $this->getCondicion();
+    }
 }
