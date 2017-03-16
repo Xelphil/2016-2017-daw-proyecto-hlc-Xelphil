@@ -2,13 +2,15 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Material;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MaterialType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -22,13 +24,14 @@ class MaterialType extends AbstractType
             ->add('fechaBaja')
             ->add('locales')
             ->add('proveedores')
-            ->add('estados');
+            ->add('estados')        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Material::class
-        ]);
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Entity\Material'
+        ));
     }
+
 }

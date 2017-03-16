@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Listado de Estados</h1>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-sm-5">Planta</th>
+                <th class="col-sm-5">Nombre</th>
+                <th class="col-sm-2"><a href="{{ path('nuevo_estado') }}" class="btn btn-success"><i class="fa fa-plus"></i> Añadir local</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estado in estados %}
+                <tr>
+                    <td>{{ estado.id }}</td>
+                    <td>{{ estado.condicion }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

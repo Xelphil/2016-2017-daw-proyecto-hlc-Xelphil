@@ -34,15 +34,14 @@ class MaterialController extends Controller
     }
 
     /**
-     * @Route("/nuevo", name="nuevo_material", methods={"GET", "POST"})
-     * @Route("/modificar/{id}", name="modificar_material", methods={"GET", "POST"})
+     * @Route("/nuevo_material", name="nuevo_material", methods={"GET", "POST"})
+     * @Route("/modificar_material/{id}", name="modificar_material", methods={"GET", "POST"})
      */
     public function formmaterialesAction(Request $request, Material $material = null)
     {
-        /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        if (null == $material) {
+        if (null === $material) {
             $material = new Material();
             $em->persist($material);
         }
@@ -52,18 +51,19 @@ class MaterialController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
             try {
                 $em->flush();
                 $this->addFlash('estado', 'Cambios guardados con éxito');
-                return $this->redirectToRoute('listar_materiales');
+                return $this->redirectToRoute('mostrar_locales');
             }
-            catch(Exception $e) {
+            catch(\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');
             }
 
         }
 
-        return $this->render('aplicacion/listar_materiales.html.twig', [
+        return $this->render('aplicacion/form_materiales.html.twig', [
             'material' => $material,
             'formulario' => $form->createView()
         ]);

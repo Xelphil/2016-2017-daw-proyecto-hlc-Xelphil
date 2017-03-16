@@ -183,4 +183,7 @@ class Local
     {
         return $this->materiales;
     }
+    public function __toString() {
+        return $this->getNombre();
+    }
 }
